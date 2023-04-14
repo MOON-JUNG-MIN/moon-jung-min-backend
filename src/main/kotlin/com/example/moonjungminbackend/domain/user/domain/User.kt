@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "tbl_user")
-class User (
+data class User (
 
         @field:NotNull
         @field:Column(columnDefinition = "VARCHAR(50)")

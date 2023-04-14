@@ -29,7 +29,7 @@ class SecurityConfig (
         http
                 .authorizeHttpRequests()
 
-                .antMatchers(HttpMethod.POST,"/user/signup").permitAll()
+                .antMatchers(HttpMethod.GET, "/login/oauth2/code/google").permitAll()
 
                 .anyRequest().authenticated()
 
