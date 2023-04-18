@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class GlobalExceptionHandler {
 
     @ExceptionHandler(CustomException::class)
-    fun custom(e: CustomException): ResponseEntity<ErrorResponse> {
+    fun custom(e: CustomException): ResponseEntity<ErrorResponse<Unit>> {
         return ResponseEntity(
                 ErrorResponse.custom(e), HttpStatus.valueOf(e.status)
         )
     }
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun valid(e: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
+    fun valid(e: MethodArgumentNotValidException): ResponseEntity<ErrorResponse<Unit>> {
         return ResponseEntity(
                 ErrorResponse.valid(400, "BAD REQUEST"), HttpStatus.valueOf(400)
         )
