@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestHeader
 @FeignClient(name = "UserInfoClient", url = "https://www.googleapis.com/oauth2/v1/userinfo")
 interface UserInfoClient {
 
-    @GetMapping(produces = ["application/json"])
+    @GetMapping
     fun info(
             @RequestHeader("Authorization") access: String
     ): UserInfoDto

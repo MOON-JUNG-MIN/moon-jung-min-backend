@@ -24,11 +24,26 @@ spring:
           google:
             client-id: ${CLIENT_ID}
             client-secret: ${CLIENT_SECRET}
+            redirect-uri: ${REDIRECT:http://localhost:8080/login/oauth2/code/google}
+            authorization-grant-type: ${GRANT_TYPE:authorization_code}
             scope:
-              - profile, email
+              - email
+              - profile
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v1/userinfo
 
 jwt:
   secret-key: ${JWT_SECRET:assd}
   access-exp: ${JWT_ACCESS_EXP:18000000000000000}
   header: ${JWT_HEADER:Authorization}
   prefix: ${JWT_PREFIX:Bearer}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 10000

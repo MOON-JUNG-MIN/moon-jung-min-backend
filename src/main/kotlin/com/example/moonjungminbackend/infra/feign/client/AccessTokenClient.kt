@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @FeignClient(name = "AccessTokenClient", url = "https://oauth2.googleapis.com/token")
 interface AccessTokenClient {
 
-    @PostMapping(produces = ["application/json"])
+    @PostMapping
     fun access(
             @RequestParam(value = "code") code: String,
             @RequestParam(value = "client_id") clientId: String,
@@ -16,5 +16,4 @@ interface AccessTokenClient {
             @RequestParam(value = "redirect_uri") redirectUri: String,
             @RequestParam(value = "grant_type") grantType: String
     ): UserAccessDto
-
 }
