@@ -12,19 +12,14 @@ import javax.validation.constraints.NotNull
 data class User (
 
         @field:NotNull
-        @field:Column(columnDefinition = "VARCHAR(50)")
+        @field:Column(columnDefinition = "VARCHAR(100)")
         val email: String,
 
         @field:NotNull
-        @field:Column(columnDefinition = "VARCHAR(50)")
+        @field:Column(columnDefinition = "VARCHAR(100)")
         val nickname: String,
 
         @field:NotNull
-        @field:Column(columnDefinition = "VARCHAR(200)")
-        val profileImage: String,
+        val profileImage: String
 
-        @field:NotNull
-        val createDate: Date
-
-) : BaseEntity() {
-}
+) : BaseEntity()

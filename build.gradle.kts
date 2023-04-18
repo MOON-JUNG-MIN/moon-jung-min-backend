@@ -37,22 +37,12 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
-    //redis
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
-
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4")
+    implementation("org.springframework.security:spring-security-oauth2-client")
 
     implementation("com.querydsl:querydsl-jpa:5.0.0")
     kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
 }
-
-extra["springCloudVersion"] = "Hoxton.SR3"
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
-    }
-}
-
 
 allprojects {
 
