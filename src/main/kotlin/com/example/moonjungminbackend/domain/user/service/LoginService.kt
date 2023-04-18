@@ -1,5 +1,6 @@
 package com.example.moonjungminbackend.domain.user.service
 
+import com.example.moonjungminbackend.domain.user.controller.dto.CodeRequest
 import com.example.moonjungminbackend.domain.user.controller.dto.TokenResponse
 import com.example.moonjungminbackend.domain.user.domain.User
 import com.example.moonjungminbackend.domain.user.domain.repository.UserRepository
@@ -18,10 +19,10 @@ class LoginService (
         private val jwtProvider: JwtProvider
 ) {
 
-    fun login(code: String): TokenResponse {
+    fun login(codeRequest: CodeRequest): TokenResponse {
 
         val access = accessTokenClient.access(
-                code = code,
+                code = codeRequest.code,
                 clientId = clientProperties.clientId,
                 clientSecret = clientProperties.clientSecret,
                 redirectUri = clientProperties.redirectUri,

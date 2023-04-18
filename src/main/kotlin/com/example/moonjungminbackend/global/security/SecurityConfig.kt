@@ -30,7 +30,7 @@ class SecurityConfig (
                 .authorizeHttpRequests()
 
                 .antMatchers(HttpMethod.GET, "/login/oauth2/code/google").permitAll()
-                .antMatchers(HttpMethod.POST, "/user/login/{code}").permitAll()
+                .antMatchers(HttpMethod.POST, "/user/login").permitAll()
 
                 .anyRequest().authenticated()
 

@@ -37,7 +37,8 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
-    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4")
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:3.1.3")
+    implementation("io.github.openfeign:feign-httpclient:11.9.1")
     implementation("org.springframework.security:spring-security-oauth2-client")
 
     implementation("com.querydsl:querydsl-jpa:5.0.0")
