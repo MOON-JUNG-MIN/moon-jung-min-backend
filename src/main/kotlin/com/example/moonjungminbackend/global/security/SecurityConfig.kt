@@ -37,6 +37,8 @@ class SecurityConfig (
                 .antMatchers(HttpMethod.PUT, "/bucket/end/{id}").authenticated()
                 .antMatchers(HttpMethod.DELETE, "/bucket/{id}").authenticated()
 
+                .antMatchers(HttpMethod.POST, "/member/{id}").authenticated()
+
                 .anyRequest().authenticated()
 
                 .and()
