@@ -12,18 +12,18 @@ data class Bucket(
 
         @field:NotNull
         @field:Column(columnDefinition = "VARCHAR(100)")
-        val title: String,
+        var title: String,
 
         @field:NotNull
         @field:Column(columnDefinition = "VARCHAR(500)")
-        val content: String,
+        var content: String,
 
         @field:NotNull
         @field:Column(columnDefinition = "VARCHAR(200)")
-        val image: String,
+        var image: String,
 
         @field:NotNull
-        val targetDate: Date,
+        var targetDate: Date,
 
         @field:NotNull
         val isEnd: Boolean,
@@ -32,4 +32,11 @@ data class Bucket(
         @JoinColumn(name = "user_id", nullable = false)
         val user: User
 
-) : BaseEntity()
+) : BaseEntity() {
+        fun update(title: String, content: String, image: String, targetDate: Date) {
+                this.title = title
+                this.content = content
+                this.image = image
+                this.targetDate = targetDate
+        }
+}

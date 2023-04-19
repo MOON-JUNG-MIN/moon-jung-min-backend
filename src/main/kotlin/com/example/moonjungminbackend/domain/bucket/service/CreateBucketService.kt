@@ -5,13 +5,14 @@ import com.example.moonjungminbackend.domain.bucket.domain.Bucket
 import com.example.moonjungminbackend.domain.bucket.domain.repository.BucketRepository
 import com.example.moonjungminbackend.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class CreateBucketService (
         private val bucketRepository: BucketRepository,
         private val userFacade: UserFacade
 ) {
-
+    @Transactional
     fun execute(request: BucketCreateRequest) {
         bucketRepository.save(
                 Bucket(
