@@ -12,7 +12,7 @@ class CreateBucketService (
         private val bucketRepository: BucketRepository,
         private val userFacade: UserFacade
 ) {
-    @Transactional
+    @Transactional(readOnly = true)
     fun execute(request: BucketCreateRequest) {
         bucketRepository.save(
                 Bucket(

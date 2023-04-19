@@ -2,6 +2,7 @@ package com.example.moonjungminbackend.domain.bucket.controller
 
 import com.example.moonjungminbackend.domain.bucket.controller.dto.BucketCreateRequest
 import com.example.moonjungminbackend.domain.bucket.controller.dto.BucketUpdateRequest
+import com.example.moonjungminbackend.domain.bucket.service.CompleteBucketService
 import com.example.moonjungminbackend.domain.bucket.service.CreateBucketService
 import com.example.moonjungminbackend.domain.bucket.service.DeleteBucketService
 import com.example.moonjungminbackend.domain.bucket.service.UpdateBucketService
@@ -18,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController
 class BucketController (
         private val createBucketService: CreateBucketService,
         private val updateBucketService: UpdateBucketService,
-        private val deleteBucketService: DeleteBucketService
+        private val deleteBucketService: DeleteBucketService,
+        private val completeBucketService: CompleteBucketService
 ) {
 
     @PostMapping
@@ -34,6 +36,11 @@ class BucketController (
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") id: Long) {
         deleteBucketService.execute(id)
+    }
+
+    @PutMapping("/end/{id}")
+    fun end(@PathVariable("id") id: Long) {
+        completeBucketService.execute(id)
     }
 
 }

@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class DeleteBucketService (
+class CompleteBucketService (
         private val bucketRepository: BucketRepository
 ) {
 
-    @Transactional(readOnly = true)
+    @Transactional
     fun execute(id: Long) {
         val bucket = bucketRepository.findBucketById(id) ?: throw BucketNotFoundException.EXCEPTION
 
-        bucketRepository.delete(bucket)
+        bucket.endBucket(true)
     }
 
 }

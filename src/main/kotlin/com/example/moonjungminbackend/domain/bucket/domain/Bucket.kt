@@ -26,7 +26,7 @@ data class Bucket(
         var targetDate: Date,
 
         @field:NotNull
-        val isEnd: Boolean,
+        var isEnd: Boolean,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "user_id", nullable = false)
@@ -38,5 +38,9 @@ data class Bucket(
                 this.content = content
                 this.image = image
                 this.targetDate = targetDate
+        }
+
+        fun endBucket(isEnd: Boolean) {
+                this.isEnd = isEnd
         }
 }
