@@ -31,7 +31,9 @@ class SecurityConfig (
 
                 .antMatchers(HttpMethod.GET, "/login/oauth2/code/google").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/bucket").permitAll()
+
+                .antMatchers(HttpMethod.POST, "/bucket").authenticated()
+                .antMatchers(HttpMethod.PUT, "/bucket/{id}").authenticated()
 
                 .anyRequest().authenticated()
 
