@@ -11,6 +11,7 @@ enum class ErrorCode (
     BUCKET_NOT_FOUND(HttpStatus.NOT_FOUND, "버킷을 찾지 못함"),
 
     MEMBER_EXIST(HttpStatus.CONFLICT, "멤버가 이미 존재함"),
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "멤버를 찾지 못함"),
 
     INVALID_JWT_EXCEPTION(HttpStatus.UNAUTHORIZED, "토큰 인증 오류"),
     EXPIRED_JWT_EXCEPTION(HttpStatus.UNAUTHORIZED, "토큰 만료"),
