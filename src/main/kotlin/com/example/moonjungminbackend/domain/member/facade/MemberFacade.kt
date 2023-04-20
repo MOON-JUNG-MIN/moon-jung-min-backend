@@ -1,5 +1,6 @@
 package com.example.moonjungminbackend.domain.member.facade
 
+import com.example.moonjungminbackend.domain.bucket.controller.dto.MemberProfileResponse
 import com.example.moonjungminbackend.domain.bucket.domain.Bucket
 import com.example.moonjungminbackend.domain.member.domain.repository.MemberRepository
 import org.springframework.stereotype.Component
@@ -11,10 +12,13 @@ class MemberFacade (
         private val memberRepository: MemberRepository
 ) {
 
-    fun findUsersByBucket(bucket: Bucket): List<String> {
+    fun findUsersByBucket(bucket: Bucket): List<MemberProfileResponse> {
         val users = memberRepository.findMembersByBucket(bucket).stream()
                 .map {
-                    it.user.nickname
+                    MemberProfileResponse(
+                            it.user.nickname,
+                            it.user.profileImage
+                    )
                 }.collect(Collectors.toList())
 
         return users

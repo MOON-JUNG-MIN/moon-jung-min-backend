@@ -11,5 +11,5 @@ data class MyBucketResponse (
         val targetDate: Date,
         val isEnd: Boolean,
         val startDate: LocalDateTime,
-        val members: List<String>
+        val members: List<MemberProfileResponse>
 )
