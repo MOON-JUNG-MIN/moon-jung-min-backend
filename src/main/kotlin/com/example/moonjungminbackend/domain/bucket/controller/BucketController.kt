@@ -2,11 +2,10 @@ package com.example.moonjungminbackend.domain.bucket.controller
 
 import com.example.moonjungminbackend.domain.bucket.controller.dto.BucketCreateRequest
 import com.example.moonjungminbackend.domain.bucket.controller.dto.BucketUpdateRequest
-import com.example.moonjungminbackend.domain.bucket.service.CompleteBucketService
-import com.example.moonjungminbackend.domain.bucket.service.CreateBucketService
-import com.example.moonjungminbackend.domain.bucket.service.DeleteBucketService
-import com.example.moonjungminbackend.domain.bucket.service.UpdateBucketService
+import com.example.moonjungminbackend.domain.bucket.controller.dto.MyBucketListResponse
+import com.example.moonjungminbackend.domain.bucket.service.*
 import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
@@ -20,8 +19,14 @@ class BucketController (
         private val createBucketService: CreateBucketService,
         private val updateBucketService: UpdateBucketService,
         private val deleteBucketService: DeleteBucketService,
-        private val completeBucketService: CompleteBucketService
+        private val completeBucketService: CompleteBucketService,
+        private val myBucketService: MyBucketService
 ) {
+
+    @GetMapping
+    fun read(): MyBucketListResponse {
+        return myBucketService.execute()
+    }
 
     @PostMapping
     fun create(@RequestBody request: BucketCreateRequest) {
