@@ -4,6 +4,7 @@ import com.example.moonjungminbackend.domain.bucket.domain.repository.BucketRepo
 import com.example.moonjungminbackend.domain.bucket.exception.BucketNotFoundException
 import com.example.moonjungminbackend.domain.member.domain.Member
 import com.example.moonjungminbackend.domain.member.domain.repository.MemberRepository
+import com.example.moonjungminbackend.domain.member.exception.MemberExistException
 import com.example.moonjungminbackend.domain.member.present.dto.MemberAddRequest
 import com.example.moonjungminbackend.domain.user.domain.repository.UserRepository
 import com.example.moonjungminbackend.domain.user.exception.UserNotFoundException
@@ -21,6 +22,10 @@ class MemberAddService (
     fun execute(id: Long, request: MemberAddRequest) {
         val bucket = bucketRepository.findBucketById(id) ?: throw BucketNotFoundException.EXCEPTION
         val user = userRepository.findUserByEmail(request.email) ?: throw UserNotFoundException.EXCEPTION
+
+        memberRepository.findMemberByUser(user)?.let {
+            throw MemberExistException.EXCEPTION
+        }
 
         memberRepository.save(
                 Member(
